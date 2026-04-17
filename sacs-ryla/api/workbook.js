@@ -1,16 +1,14 @@
-function doPost(e) {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("workbook");
+const API_URL = "https://script.google.com/macros/s/AKfycbzb--cocPl8aZbJjXC8UA4VkDT3AdBm4Za-qqS0O7jLn6H-PkmMA_i78Cxj4egwr7lvnQ/exec";
 
-  const data = JSON.parse(e.postData.contents);
+async function saveToBackend() {
+  try {
+    await fetch(API_URL, {
+      method: "POST",
+      body: JSON.stringify(collectData())
+    });
 
-  sheet.appendRow([
-    data.session_id || "",
-    data.dc_title || "",
-    data.dc_context || "",
-    new Date()
-  ]);
-
-  return ContentService
-    .createTextOutput(JSON.stringify({ status: "success" }))
-    .setMimeType(ContentService.MimeType.JSON);
+    console.log("Saved to Google Sheets");
+  } catch (err) {
+    console.error("Save failed", err);
+  }
 }
