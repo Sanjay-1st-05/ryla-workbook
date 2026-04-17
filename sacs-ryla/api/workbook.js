@@ -47,7 +47,7 @@ module.exports = async (req, res) => {
 
     // Check if record already exists
     const { data: existing } = await supabase
-      .from('workbooks')
+      .from('workbook')
       .select('id')
       .eq('session_id', session_id)
       .single();
@@ -55,14 +55,14 @@ module.exports = async (req, res) => {
     let result;
     if (existing) {
       result = await supabase
-        .from('workbooks')
+        .from('workbook')
         .update(payload)
         .eq('session_id', session_id)
         .select()
         .single();
     } else {
       result = await supabase
-        .from('workbooks')
+        .from('workbook')
         .insert(payload)
         .select()
         .single();
