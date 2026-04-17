@@ -4,9 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SACS RYLA — Design Thinking Workbook</title>
+<<<<<<< HEAD
   <meta name="description" content="Interactive Design Thinking Workbook for SACS RYLA participants — 5 phases from Explore to Evolve." />
   <link rel="stylesheet" href="/Sacs-ryla/css/style.css" />
+=======
+
+  <!-- ✅ FIXED PATH -->
+  <link rel="stylesheet" href="/css/style.css" />
+>>>>>>> f88316d (small update in index)
 </head>
+
 <body>
 <div class="app-shell">
 
@@ -17,24 +24,18 @@
       <div class="brand-title">Design<br>Thinking</div>
       <div class="brand-sub">Your interactive workbook through the DT journey.</div>
     </div>
-    <nav class="phase-nav">
-      <div class="phase-nav-label">Phases</div>
-      <button class="ph-btn active" onclick="goPhase(0)">
-        <span class="ph-num">01</span><span class="ph-label">Explore</span><span class="ph-check">✓</span>
-      </button>
-      <button class="ph-btn" onclick="goPhase(1)">
-        <span class="ph-num">02</span><span class="ph-label">Empathise</span><span class="ph-check">✓</span>
-      </button>
-      <button class="ph-btn" onclick="goPhase(2)">
-        <span class="ph-num">03</span><span class="ph-label">Experiment</span><span class="ph-check">✓</span>
-      </button>
-      <button class="ph-btn" onclick="goPhase(3)">
-        <span class="ph-num">04</span><span class="ph-label">Engage</span><span class="ph-check">✓</span>
-      </button>
-      <button class="ph-btn" onclick="goPhase(4)">
-        <span class="ph-num">05</span><span class="ph-label">Evolve</span><span class="ph-check">✓</span>
-      </button>
-    </nav>
+
+    <!-- ✅ FIXED BUTTON CLASS -->
+    <div class="phase-nav">
+      <button class="ph-btn active">01 Explore</button>
+      <button class="ph-btn">02 Empathise</button>
+      <button class="ph-btn">03 Experiment</button>
+      <button class="ph-btn">04 Engage</button>
+      <button class="ph-btn">05 Evolve</button>
+    </div>
+
+    <p id="progressText">Progress: 20%</p>
+
     <div class="sidebar-progress">
       <div class="progress-label">
         <span>Progress</span><span id="progress-pct">20%</span>
@@ -43,6 +44,7 @@
         <div class="progress-fill" id="progress-fill"></div>
       </div>
     </div>
+
     <div class="sidebar-session">
       <div class="session-row">
         <span class="session-dot"></span>
