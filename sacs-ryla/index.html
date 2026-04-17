@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SACS RYLA — Design Thinking Workbook</title>
+  <meta name="description" content="Interactive Design Thinking Workbook for SACS RYLA participants — 5 phases from Explore to Evolve." />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-tag">SACS RYLA · 2025</div>
+      <div class="brand-title">Design<br>Thinking</div>
+      <div class="brand-sub">Your interactive workbook through the DT journey.</div>
+    </div>
+    <nav class="phase-nav">
+      <div class="phase-nav-label">Phases</div>
+      <button class="ph-btn active" onclick="goPhase(0)">
+        <span class="ph-num">01</span><span class="ph-label">Explore</span><span class="ph-check">✓</span>
+      </button>
+      <button class="ph-btn" onclick="goPhase(1)">
+        <span class="ph-num">02</span><span class="ph-label">Empathise</span><span class="ph-check">✓</span>
+      </button>
+      <button class="ph-btn" onclick="goPhase(2)">
+        <span class="ph-num">03</span><span class="ph-label">Experiment</span><span class="ph-check">✓</span>
+      </button>
+      <button class="ph-btn" onclick="goPhase(3)">
+        <span class="ph-num">04</span><span class="ph-label">Engage</span><span class="ph-check">✓</span>
+      </button>
+      <button class="ph-btn" onclick="goPhase(4)">
+        <span class="ph-num">05</span><span class="ph-label">Evolve</span><span class="ph-check">✓</span>
+      </button>
+    </nav>
+    <div class="sidebar-progress">
+      <div class="progress-label">
+        <span>Progress</span><span id="progress-pct">20%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+    <div class="sidebar-session">
+      <div class="session-row">
+        <span class="session-dot"></span>
+        <span class="session-id-text" id="session-display">Loading…</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- PHASE 1: EXPLORE -->
+    <section class="phase-block visible" id="phase-0">
+      <div class="phase-hero">
+        <div class="phase-eyebrow" style="color:var(--gold)">Phase 01</div>
+        <h1>Explore</h1>
+        <p>Understand the macro context. Scan the environment for forces shaping your challenge, then frame it as an opportunity.</p>
+      </div>
+      <div class="tip-box"><strong>Goal:</strong> Use STEEP analysis to identify trends and prioritise which have the most impact on your design challenge.</div>
+
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--gold-dim)">🎯</div>
+        <h2>Design Challenge</h2>
+      </div>
+      <div class="card">
+        <label class="field-lbl">Your design challenge</label>
+        <input type="text" data-field="dc_title" placeholder="e.g. How might we improve youth employment pathways in rural communities?" />
+        <label class="field-lbl">Organisation / Project sponsor</label>
+        <input type="text" data-field="dc_org" placeholder="Organisation name" />
+        <label class="field-lbl">Context &amp; background</label>
+        <textarea data-field="dc_context" placeholder="Brief description of the issue and why it matters…"></textarea>
+      </div>
+
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--teal-dim)">📊</div>
+        <h2>STEEP Analysis</h2>
+      </div>
+      <div class="steep-grid">
+        <div class="steep-cell" style="background:var(--indigo-dim);border-color:var(--indigo)">
+          <div class="steep-cell-label" style="color:var(--indigo-l)">Social &amp; Demographics</div>
+          <textarea data-field="steep_s" placeholder="Key social trends affecting this challenge…"></textarea>
+        </div>
+        <div class="steep-cell" style="background:rgba(56,130,220,.1);border-color:#3882DC">
+          <div class="steep-cell-label" style="color:#7AB3EE">Technology</div>
+          <textarea data-field="steep_t" placeholder="Technological trends and disruptions…"></textarea>
+        </div>
+        <div class="steep-cell" style="background:rgba(100,190,80,.1);border-color:#64BE50">
+          <div class="steep-cell-label" style="color:#8DDA78">Economy</div>
+          <textarea data-field="steep_e" placeholder="Economic factors and trends…"></textarea>
+        </div>
+        <div class="steep-cell" style="background:var(--teal-dim);border-color:var(--teal)">
+          <div class="steep-cell-label" style="color:var(--teal-l)">Environment &amp; Nature</div>
+          <textarea data-field="steep_en" placeholder="Environmental considerations…"></textarea>
+        </div>
+        <div class="steep-cell" style="background:var(--amber-dim);border-color:var(--amber)">
+          <div class="steep-cell-label" style="color:var(--amber)">Politics &amp; Legal</div>
+          <textarea data-field="steep_p" placeholder="Political and legal landscape…"></textarea>
+        </div>
+        <div class="steep-cell" style="background:var(--rose-dim);border-color:var(--rose)">
+          <div class="steep-cell-label" style="color:var(--rose-l)">Key Synthesis Notes</div>
+          <textarea data-field="steep_synth" placeholder="What relationships do you see between these trends?"></textarea>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--amber-dim)">🎯</div>
+        <h2>Impact Matrix</h2>
+      </div>
+      <div class="matrix-axis-label">HIGH IMPACT</div>
+      <div class="matrix-wrap">
+        <div class="matrix-cell mc-hi-uncertain">
+          <h4>High Impact · Uncertain</h4>
+          <textarea data-field="matrix_hi_uncertain" placeholder="List trends here…"></textarea>
+        </div>
+        <div class="matrix-cell mc-hi-likely">
+          <h4>High Impact · Likely ✓</h4>
+          <textarea data-field="matrix_hi_likely" placeholder="Priority trends here…"></textarea>
+        </div>
+        <div class="matrix-cell mc-lo-uncertain">
+          <h4>Low Impact · Uncertain</h4>
+          <textarea data-field="matrix_lo_uncertain" placeholder="Monitor these…"></textarea>
+        </div>
+        <div class="matrix-cell mc-lo-likely">
+          <h4>Low Impact · Likely</h4>
+          <textarea data-field="matrix_lo_likely" placeholder="Minimum effort…"></textarea>
+        </div>
+      </div>
+      <div class="matrix-axis-label">LOW IMPACT</div>
+
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--rose-dim)">💡</div>
+        <h2>Opportunity Framing — "How Might We"</h2>
+      </div>
+      <div class="card">
+        <label class="field-lbl">Real issues behind this design challenge</label>
+        <textarea data-field="hmw_issues" placeholder="What are the underlying root causes?"></textarea>
+        <label class="field-lbl">Your top 3 "How Might We" statements</label>
+        <div class="hmw-list">
+          <div class="hmw-row"><div class="hmw-num">1</div><input type="text" data-field="hmw_1" placeholder="How might we…" /></div>
+          <div class="hmw-row"><div class="hmw-num">2</div><input type="text" data-field="hmw_2" placeholder="How might we…" /></div>
+          <div class="hmw-row"><div class="hmw-num">3</div><input type="text" data-field="hmw_3" placeholder="How might we…" /></div>
+        </div>
+        <label class="field-lbl">Selected "How Might We" to proceed with</label>
+        <input type="text" class="hmw-final" data-field="hmw_final" placeholder="The one HMW statement you will take forward…" />
+      </div>
+
+      <div class="action-row">
+        <div class="save-status">
+          <div class="save-dot saved" id="save-dot"></div>
+          <span id="save-text">All changes saved</span>
+        </div>
+        <button class="btn btn-primary" onclick="nextPhase(0)">Next: Empathise →</button>
+      </div>
+    </section>
+
+    <!-- PHASE 2: EMPATHISE -->
+    <section class="phase-block" id="phase-1">
+      <div class="phase-hero">
+        <div class="phase-eyebrow" style="color:var(--teal)">Phase 02</div>
+        <h1>Empathise</h1>
+        <p>Get deep into the lives of your users. Uncover what they truly think, feel, need and struggle with.</p>
+      </div>
+      <div class="tip-box"><strong>Goal:</strong> Use observation, interviews and empathy maps to uncover what your users truly experience.</div>
+
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--indigo-dim)">🗺️</div>
+        <h2>Empathy Map</h2>
+      </div>
+      <div class="empathy-map">
+        <div class="em-cell em-think">
+          <h4>Think &amp; Feel</h4>
+          <textarea data-field="em_think" placeholder="What really matters to them? Their worries, drives, aspirations…"></textarea>
+        </div>
+        <div class="em-cell em-see">
+          <h4>See</h4>
+          <textarea data-field="em_see" placeholder="What do they observe in their environment?"></textarea>
+        </div>
+        <div class="em-cell em-hear">
+          <h4>Hear</h4>
+          <textarea data-field="em_hear" placeholder="What are friends/family saying? Who influences them?"></textarea>
+        </div>
+        <div class="em-cell em-say">
+          <h4>Say &amp; Do</h4>
+          <textarea data-field="em_say" placeholder="What is their attitude? Behaviour? Gaps between what they say and do?"></textarea>
+        </div>
+        <div class="em-cell em-pain">
+          <h4>Pain</h4>
+          <textarea data-field="em_pain" placeholder="Barriers, frustrations, obstacles they face…"></textarea>
+        </div>
+        <div class="em-cell em-gain">
+          <h4>Gain</h4>
+          <textarea data-field="em_gain" placeholder="What makes them happy? What do they truly want?"></textarea>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <div class="section-icon" style="background:rgba(56,130,220,.1)">📋</div>
+        <h2>User Interview Notes</h2>
+      </div>
+      <div class="card">
+        <div class="grid-2">
+          <div>
+            <label class="field-lbl">Interviewee name</label>
+            <input type="text" data-field="int_name" placeholder="Name" />
+            <label class="field-lbl">Age range</label>
+            <input type="text" data-field="int_age" placeholder="e.g. 25–35" />
+            <label class="field-lbl">Profession</label>
+            <input type="text" data-field="int_prof" placeholder="Role / occupation" />
+          </div>
+          <div>
+            <label class="field-lbl">Interview date &amp; location</label>
+            <input type="text" data-field="int_date" placeholder="Date, location" />
+            <label class="field-lbl">Family / Education background</label>
+            <input type="text" data-field="int_bg" placeholder="Brief background" />
+            <label class="field-lbl">Hobbies / Likes / Dislikes</label>
+            <input type="text" data-field="int_hobbies" placeholder="What they enjoy or dislike" />
+          </div>
+        </div>
+        <label class="field-lbl">Interview notes (verbatim / key quotes)</label>
+        <textarea data-field="int_notes" style="min-height:90px" placeholder="Record direct quotes and observations here…"></textarea>
+        <label class="field-lbl">3 most memorable things about this interviewee</label>
+        <textarea data-field="int_memorable" placeholder="What stood out? What surprised you?"></textarea>
+        <label class="field-lbl">User insights &amp; deep needs identified</label>
+        <textarea data-field="int_needs" placeholder="[User] needs a way to [need] because [insight]."></textarea>
+      </div>
+
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--rose-dim)">👤</div>
+        <h2>Persona Canvas</h2>
+      </div>
+      <div class="card">
+        <div class="grid-2" style="margin-bottom:10px">
+          <div>
+            <label class="field-lbl">Persona name</label>
+            <input type="text" data-field="per_name" placeholder="Give your persona a name" />
+          </div>
+          <div>
+            <label class="field-lbl">Age / Gender / Home</label>
+            <input type="text" data-field="per_demo" placeholder="e.g. 28 / Female / Thimphu" />
+          </div>
+        </div>
+        <div class="persona-wrap">
+          <div class="p-cell p-demo">
+            <h3>Demographic Profile</h3>
+            <textarea data-field="per_demo2" placeholder="Family, education background, lifestyle…"></textarea>
+          </div>
+          <div class="p-cell p-goals">
+            <h3>Goals &amp; Motivation</h3>
+            <textarea data-field="per_goals" placeholder="What drives this person? What are their aspirations?"></textarea>
+          </div>
+          <div class="p-cell p-challenges">
+            <h3>Challenges &amp; Pain Points</h3>
+            <textarea data-field="per_pain" placeholder="What frustrates or blocks them?"></textarea>
+          </div>
+          <div class="p-cell p-needs">
+            <h3>Deep Needs Statement</h3>
+            <textarea data-field="per_needs" placeholder="Their deepest unmet need related to the challenge…"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--amber-dim)">🗂️</div>
+        <h2>Stakeholder Mapping</h2>
+      </div>
+      <div class="matrix-axis-label">HIGH INTEREST</div>
+      <div class="stakeholder-grid">
+        <div class="sh-quad sh-q1">
+          <div class="sh-quad-label">High Interest · Low Influence</div>
+          <textarea data-field="sh_hi_lo" placeholder="Keep informed…"></textarea>
+        </div>
+        <div class="sh-quad sh-q2">
+          <div class="sh-quad-label">High Interest · High Influence ★</div>
+          <textarea data-field="sh_hi_hi" placeholder="Engage closely — key partners…"></textarea>
+        </div>
+        <div class="sh-quad sh-q3">
+          <div class="sh-quad-label">Low Interest · Low Influence</div>
+          <textarea data-field="sh_lo_lo" placeholder="Monitor with minimum effort…"></textarea>
+        </div>
+        <div class="sh-quad sh-q4">
+          <div class="sh-quad-label">Low Interest · High Influence</div>
+          <textarea data-field="sh_lo_hi" placeholder="Keep satisfied…"></textarea>
+        </div>
+      </div>
+      <div class="matrix-axis-label">LOW INTEREST</div>
+
+      <div class="action-row">
+        <button class="btn btn-ghost" onclick="goPhase(0)">← Back</button>
+        <button class="btn btn-primary" onclick="nextPhase(1)">Next: Experiment →</button>
+      </div>
+    </section>
+
+    <!-- PHASE 3: EXPERIMENT -->
+    <section class="phase-block" id="phase-2">
+      <div class="phase-hero">
+        <div class="phase-eyebrow" style="color:var(--rose)">Phase 03</div>
+        <h1>Experiment</h1>
+        <p>Ideate boldly. Push beyond obvious solutions using SCAMPER and reconnect with your persona to stay grounded.</p>
+      </div>
+      <div class="tip-box"><strong>Goal:</strong> Generate a range of creative ideas and select the strongest concept to move forward with.</div>
+
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--rose-dim)">🔀</div>
+        <h2>SCAMPER Worksheet</h2>
+      </div>
+      <div class="card">
+        <div class="scamper-row">
+          <div class="sc-label"><span class="sc-abbr">S</span><span class="sc-name">Substitute</span></div>
+          <div style="flex:1"><div class="sc-tip">What can you substitute? Who or what could you use instead?</div><textarea data-field="sc_substitute" placeholder="Your ideas…" style="min-height:50px"></textarea></div>
+        </div>
+        <div class="scamper-row">
+          <div class="sc-label"><span class="sc-abbr">C</span><span class="sc-name">Combine</span></div>
+          <div style="flex:1"><div class="sc-tip">What can you combine or bring together?</div><textarea data-field="sc_combine" placeholder="Your ideas…" style="min-height:50px"></textarea></div>
+        </div>
+        <div class="scamper-row">
+          <div class="sc-label"><span class="sc-abbr">A</span><span class="sc-name">Adapt</span></div>
+          <div style="flex:1"><div class="sc-tip">What can you adapt from elsewhere as a solution?</div><textarea data-field="sc_adapt" placeholder="Your ideas…" style="min-height:50px"></textarea></div>
+        </div>
+        <div class="scamper-row">
+          <div class="sc-label"><span class="sc-abbr">M</span><span class="sc-name">Modify</span></div>
+          <div style="flex:1"><div class="sc-tip">Can you modify or change something in some way?</div><textarea data-field="sc_modify" placeholder="Your ideas…" style="min-height:50px"></textarea></div>
+        </div>
+        <div class="scamper-row">
+          <div class="sc-label"><span class="sc-abbr">P</span><span class="sc-name">Put to other uses</span></div>
+          <div style="flex:1"><div class="sc-tip">What new ways could this be used?</div><textarea data-field="sc_put" placeholder="Your ideas…" style="min-height:50px"></textarea></div>
+        </div>
+        <div class="scamper-row">
+          <div class="sc-label"><span class="sc-abbr">E</span><span class="sc-name">Eliminate</span></div>
+          <div style="flex:1"><div class="sc-tip">What can you get rid of or simplify?</div><textarea data-field="sc_eliminate" placeholder="Your ideas…" style="min-height:50px"></textarea></div>
+        </div>
+        <div class="scamper-row">
+          <div class="sc-label"><span class="sc-abbr">R</span><span class="sc-name">Reverse</span></div>
+          <div style="flex:1"><div class="sc-tip">What could you rearrange, reverse, or change around?</div><textarea data-field="sc_reverse" placeholder="Your ideas…" style="min-height:50px"></textarea></div>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--teal-dim)">🔗</div>
+        <h2>Reconnecting with Persona</h2>
+      </div>
+      <div class="card">
+        <div class="grid-2">
+          <div>
+            <label class="field-lbl">Persona behaviours</label>
+            <textarea data-field="rp_behaviours" placeholder="What does your persona typically do?" style="min-height:70px"></textarea>
+            <label class="field-lbl">Challenges &amp; pain points</label>
+            <textarea data-field="rp_challenges" placeholder="Revisit their key frustrations…" style="min-height:70px"></textarea>
+          </div>
+          <div>
+            <label class="field-lbl">Aspirations &amp; motivations</label>
+            <textarea data-field="rp_aspirations" placeholder="What do they want to achieve?" style="min-height:70px"></textarea>
+            <label class="field-lbl">Design criteria / constraints</label>
+            <textarea data-field="rp_criteria" placeholder="What must your solution absolutely do or avoid?" style="min-height:70px"></textarea>
+          </div>
+        </div>
+        <label class="field-lbl">Deep user needs (reminder from Empathise phase)</label>
+        <input type="text" data-field="rp_need" placeholder="Paste your need statement here as a reminder…" />
+      </div>
+
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--gold-dim)">🌟</div>
+        <h2>Top Solution Concepts</h2>
+      </div>
+      <div class="card">
+        <div style="margin-bottom:1rem">
+          <label class="field-lbl">Concept 1 — Big Idea</label>
+          <input type="text" data-field="c1_name" placeholder="Name your concept" />
+          <textarea data-field="c1_desc" placeholder="Describe this solution concept in 2–3 sentences. What does it do? Who does it serve?"></textarea>
+        </div>
+        <div style="margin-bottom:1rem">
+          <label class="field-lbl">Concept 2 — Big Idea</label>
+          <input type="text" data-field="c2_name" placeholder="Name your concept" />
+          <textarea data-field="c2_desc" placeholder="Describe this solution concept…"></textarea>
+        </div>
+        <label class="field-lbl">Selected concept to prototype</label>
+        <input type="text" data-field="c_final" placeholder="Which concept moves forward and why?" style="border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-dim)" />
+      </div>
+
+      <div class="action-row">
+        <button class="btn btn-ghost" onclick="goPhase(1)">← Back</button>
+        <button class="btn btn-primary" onclick="nextPhase(2)">Next: Engage →</button>
+      </div>
+    </section>
+
+    <!-- PHASE 4: ENGAGE -->
+    <section class="phase-block" id="phase-3">
+      <div class="phase-hero">
+        <div class="phase-eyebrow" style="color:var(--indigo-l)">Phase 04</div>
+        <h1>Engage</h1>
+        <p>Bring your solution to life through storytelling. Show how your persona experiences the solution from beginning to end.</p>
+      </div>
+      <div class="tip-box"><strong>Goal:</strong> Craft a compelling narrative storyboard that communicates your solution's human impact.</div>
+
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--indigo-dim)">📖</div>
+        <h2>Storyboard Canvas</h2>
+      </div>
+      <div class="card" style="margin-bottom:.75rem">
+        <label class="field-lbl">Storyboard title</label>
+        <input type="text" data-field="sb_title" placeholder="e.g. A day in the life of [Persona Name]…" />
+      </div>
+      <div class="storyboard">
+        <div class="sb-panel sb-begin">
+          <h4>Beginning — Setting</h4>
+          <textarea data-field="sb_begin" placeholder="Who is the persona? Where are they? What is the situation before the solution?"></textarea>
+          <input type="text" data-field="sb_begin_scene" placeholder="Scene title…" style="font-size:12px;margin-top:6px" />
+        </div>
+        <div class="sb-panel sb-middle">
+          <h4>Middle — The Solution</h4>
+          <textarea data-field="sb_middle" placeholder="What problem do they encounter? How does your solution step in?"></textarea>
+          <input type="text" data-field="sb_middle_scene" placeholder="Scene title…" style="font-size:12px;margin-top:6px" />
+        </div>
+        <div class="sb-panel sb-end">
+          <h4>End — Resolution</h4>
+          <textarea data-field="sb_end" placeholder="How is the problem resolved? What is the impact on the persona's life?"></textarea>
+          <input type="text" data-field="sb_end_scene" placeholder="Scene title…" style="font-size:12px;margin-top:6px" />
+        </div>
+      </div>
+
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--rose-dim)">💬</div>
+        <h2>Narrative Summary</h2>
+      </div>
+      <div class="card">
+        <label class="field-lbl">Tell the story in your own words (3–5 sentences)</label>
+        <textarea data-field="narrative" style="min-height:110px" placeholder="Summarise the journey your persona takes with your solution. Make it compelling and human."></textarea>
+        <label class="field-lbl">Key messages for your audience</label>
+        <textarea data-field="key_messages" placeholder="What do you want your audience to remember?"></textarea>
+      </div>
+
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--teal-dim)">🤝</div>
+        <h2>Engagement Strategy</h2>
+      </div>
+      <div class="card">
+        <label class="field-lbl">Who is your primary audience?</label>
+        <input type="text" data-field="eng_audience" placeholder="e.g. Government officials, community leaders, youth groups…" />
+        <label class="field-lbl">How will you present your solution?</label>
+        <textarea data-field="eng_how" placeholder="Pitch, demo, prototype walkthrough, roleplay…"></textarea>
+        <label class="field-lbl">Expected questions / objections to prepare for</label>
+        <textarea data-field="eng_questions" placeholder="What will your audience challenge you on?"></textarea>
+      </div>
+
+      <div class="action-row">
+        <button class="btn btn-ghost" onclick="goPhase(2)">← Back</button>
+        <button class="btn btn-primary" onclick="nextPhase(3)">Next: Evolve →</button>
+      </div>
+    </section>
+
+    <!-- PHASE 5: EVOLVE -->
+    <section class="phase-block" id="phase-4">
+      <div class="phase-hero">
+        <div class="phase-eyebrow" style="color:var(--teal)">Phase 05</div>
+        <h1>Evolve</h1>
+        <p>Plan for real-world implementation. Define strategic requirements, map your delivery process, and establish success metrics.</p>
+      </div>
+      <div class="tip-box"><strong>Goal:</strong> Turn your prototype idea into a credible, actionable implementation plan with measurable outcomes.</div>
+
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--gold-dim)">🗓️</div>
+        <h2>Action Planning</h2>
+      </div>
+      <div class="card">
+        <label class="field-lbl">The big idea / selected solution concept</label>
+        <input type="text" data-field="ev_idea" placeholder="State your main solution in one sentence" />
+        <div class="grid-2" style="margin-top:8px">
+          <div>
+            <label class="field-lbl">Objective — why this matters</label>
+            <textarea data-field="ev_objective" placeholder="Values and benefits of implementing this solution…" style="min-height:70px"></textarea>
+            <label class="field-lbl">Who will lead implementation?</label>
+            <input type="text" data-field="ev_lead" placeholder="Person / team responsible" />
+          </div>
+          <div>
+            <label class="field-lbl">Resources &amp; capabilities needed</label>
+            <textarea data-field="ev_resources" placeholder="What do you need to make this happen?" style="min-height:70px"></textarea>
+            <label class="field-lbl">Target completion date</label>
+            <input type="text" data-field="ev_date" placeholder="e.g. Q3 2025" />
+          </div>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--teal-dim)">⚡</div>
+        <h2>Quick Win Identification</h2>
+      </div>
+      <div class="card" style="border-left:3px solid var(--teal)">
+        <label class="field-lbl">What is this quick win about?</label>
+        <input type="text" data-field="qw_what" placeholder="The one thing you can start immediately…" />
+        <div class="grid-2">
+          <div>
+            <label class="field-lbl">Success indicators &amp; measurement</label>
+            <textarea data-field="qw_success" placeholder="How will you know it worked?" style="min-height:70px"></textarea>
+          </div>
+          <div>
+            <label class="field-lbl">Key steps &amp; timeline</label>
+            <textarea data-field="qw_steps" placeholder="What steps? By when?" style="min-height:70px"></textarea>
+          </div>
+        </div>
+        <label class="field-lbl">How will success be communicated?</label>
+        <input type="text" data-field="qw_comms" placeholder="Update meeting, report, social media…" />
+      </div>
+
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--indigo-dim)">📈</div>
+        <h2>Impact Evaluation Indicators</h2>
+      </div>
+      <div class="card">
+        <table class="impact-table">
+          <thead>
+            <tr><th>Criteria</th><th>Indicators &amp; Measurement</th><th>Stakeholders</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="criteria-badge cb-social">Social value</span></td>
+              <td><input type="text" data-field="imp_social_ind" placeholder="How do you measure social impact?" /></td>
+              <td><input type="text" data-field="imp_social_stake" placeholder="Who cares?" /></td>
+            </tr>
+            <tr>
+              <td><span class="criteria-badge cb-stake">Stakeholder satisfaction</span></td>
+              <td><input type="text" data-field="imp_stake_ind" placeholder="How do you measure satisfaction?" /></td>
+              <td><input type="text" data-field="imp_stake_stake" placeholder="Who is surveyed?" /></td>
+            </tr>
+            <tr>
+              <td><span class="criteria-badge cb-sustain">Sustainability</span></td>
+              <td><input type="text" data-field="imp_sustain_ind" placeholder="What makes this last?" /></td>
+              <td><input type="text" data-field="imp_sustain_stake" placeholder="Who ensures continuity?" /></td>
+            </tr>
+            <tr>
+              <td><span class="criteria-badge cb-scale">Scalability</span></td>
+              <td><input type="text" data-field="imp_scale_ind" placeholder="How could this grow?" /></td>
+              <td><input type="text" data-field="imp_scale_stake" placeholder="Who would scale it?" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--amber-dim)">🔄</div>
+        <h2>MARS Change Management Framework</h2>
+      </div>
+      <div class="mars-grid">
+        <div class="mars-cell mars-m">
+          <h4>Motivation — the Why</h4>
+          <textarea data-field="mars_m" placeholder="Why should people change? What is the compelling reason?"></textarea>
+        </div>
+        <div class="mars-cell mars-a">
+          <h4>Ability — tools &amp; skills</h4>
+          <textarea data-field="mars_a" placeholder="What training or tools do people need?"></textarea>
+        </div>
+        <div class="mars-cell mars-r">
+          <h4>Role — responsibilities</h4>
+          <textarea data-field="mars_r" placeholder="Who is responsible for what?"></textarea>
+        </div>
+        <div class="mars-cell mars-s">
+          <h4>Systems — support structure</h4>
+          <textarea data-field="mars_s" placeholder="What systems, resources and processes support the change?"></textarea>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--gold-dim)">🌟</div>
+        <h2>Concept Synthesis — Final Summary</h2>
+      </div>
+      <div class="card" style="border:1.5px solid var(--gold);background:linear-gradient(135deg,var(--ink-2) 0%,rgba(201,153,58,0.06) 100%)">
+        <div class="grid-2">
+          <div>
+            <label class="field-lbl">Design challenge</label>
+            <input type="text" data-field="syn_challenge" placeholder="Paste your design challenge" />
+            <label class="field-lbl">Persona name</label>
+            <input type="text" data-field="syn_persona" placeholder="Who you designed for" />
+            <label class="field-lbl">Deep needs addressed</label>
+            <textarea data-field="syn_needs" placeholder="What need does your solution meet?"></textarea>
+          </div>
+          <div>
+            <label class="field-lbl">Solution concept</label>
+            <input type="text" data-field="syn_solution" placeholder="Your big idea in one sentence" />
+            <label class="field-lbl">Value proposition to users</label>
+            <textarea data-field="syn_user_value" placeholder="What do users gain from this?"></textarea>
+            <label class="field-lbl">Value proposition to organisation</label>
+            <textarea data-field="syn_org_value" placeholder="What does the organisation gain?"></textarea>
+          </div>
+        </div>
+        <label class="field-lbl">Pain relievers</label>
+        <input type="text" data-field="syn_pain" placeholder="How does your solution ease the user's pain?" />
+        <label class="field-lbl">Gain creators</label>
+        <input type="text" data-field="syn_gain" placeholder="How does your solution create new value and delight?" />
+      </div>
+
+      <div class="action-row">
+        <button class="btn btn-ghost" onclick="goPhase(3)">← Back</button>
+        <button class="btn btn-complete" onclick="markComplete()">Mark Complete ✓</button>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="/js/app.js"></script>
+</body>
+</html>
