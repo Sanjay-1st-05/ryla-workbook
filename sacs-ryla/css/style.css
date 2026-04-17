@@ -10,12 +10,12 @@
 
 :root {
   /* BASE */
-  --bg: #ffffff;
+  --bg: #000000;
   --surface: #f8fafc;
   --card: #ffffff;
 
   /* TEXT */
-  --text-primary: #111827;
+  --text-primary: #feffff;
   --text-secondary: #6b7280;
 
   /* ACCENTS (kept from your design system) */
